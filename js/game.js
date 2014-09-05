@@ -24,6 +24,10 @@ H = 7
       this.grid[x][y] = piece
     },
     receive_piece: function(col_number, piece) {
+      if(this.get_cell(0, col_number) != null) {
+        return null;
+      }
+
       for(r=0;r<6;r++){
        if (this.get_cell(r, col_number) != null){
         this.set_cell(r-1, col_number, piece)
@@ -121,13 +125,19 @@ H = 7
     Game.prototype = {
       drop_piece :function(col_number){
         var row = this.board.receive_piece(col_number, this.current_player.color);
-        if (this.current_player === this.red_player) {
-          this.current_player = this.black_player
-        } else {
-          this.current_player = this.red_player
-        }
 
-        return row
+        if(row != null) {
+          if (this.current_player === this.red_player) {
+            this.current_player = this.black_player
+          } else {
+            this.current_player = this.red_player
+          }
+
+          return row;
+        }
+        else {
+          return null;
+        }
       },
       isGameOver :function() {
         return this.board.checkForWin('black') || this.board.checkForWin('red')

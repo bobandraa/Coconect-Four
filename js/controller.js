@@ -24,8 +24,10 @@ var columnClicked = function(ev) {
   var row = this.game.drop_piece(column.id)
 
   // REMOVE EVENT LISTENER IF ROW == 0
-  this.view.setCurrentPlayer(this.game.current_player);
-  this.view.setCellColor(row+1, column.id, color) // VIEW METHOOOOOOD
+  if(row != null) {
+    this.view.setCurrentPlayer(this.game.current_player);
+    this.view.setCellColor(row+1, column.id, color) // VIEW METHOOOOOOD
+  }
 }
 
 Controller.prototype = {
