@@ -37,10 +37,16 @@ Controller.prototype = {
     for (i=0; i < columns.length; i++) {
       columns[i].addEventListener("click", columnClicked.bind(this));
     }
+
+    $("#reset").on("click", function() { this.resetGame(); }.bind(this))
   },
   checkGameOver: function() {
     if(this.game.isGameOver()) {
       this.view.setWinner(this.game.getWinner());
     }
+  },
+  resetGame: function() {
+    this.game.resetGame();
+    this.view.resetCells();
   }
 }

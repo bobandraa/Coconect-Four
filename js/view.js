@@ -19,5 +19,8 @@ View.prototype = {
 
   setWinner: function(player) {
     // SHOW THE WINNER
+  },
+  resetCells: function() {
+    $(".cell").css({"background-color" : "0", "background-image" : ""})
   }
 }
