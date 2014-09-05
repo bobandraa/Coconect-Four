@@ -6,7 +6,7 @@ View.prototype = {
   setCurrentPlayer: function(player) {
     // will be able to call player.name and player.color on this
     // $('#current_player').text(player.name)
-    if (player.name == )
+    $('#players').text(player.name + "'s Turn!")
   },
 
   setCellColor: function(row, col, color) {
