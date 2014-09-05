@@ -1,21 +1,37 @@
 // models
+
   // board constructor
   //prototypes
 
-  function Board(board){
+  function Board(grid){
     var won= false;
-    this.board = board
+    this.grid = grid
   }
 
   Board.prototype = {
-    create_board :function(){
-      this.board = []
-      for(i=0;i<7;i++){
-        this.board.push(new Array(6))
+    create_grid :function(){
+      this.grid = []
+      for(i=0;i<6;i++){
+        this.grid.push(new Array(7))
       }
+    },
+    get_cell : function(x, y) {
+      return this.grid[x][y]
+    },
+    set_cell : function(x, y, piece) {
+      this.grid[x][y] = piece
+    },
+    receive_piece: function(col_number, piece) {
+      for(k=0;k<6;k++){
+       if (this.get_cell(k, col_number) != null){
+        this.set_cell(k-1, col_number, "x")
+        return
+       }
+
+      }
+      this.set_cell(this.grid.length-1, col_number, "x")
     }
   }
-
 
   // player constructor
     //prototypes
@@ -37,23 +53,23 @@
 
   Game.prototype = {
     drop_piece :function(col_number){
-      for(k=0;k<7;k++){
-       if (this.board.board[k][col_number] != null){
-        this.board.board[k-1][col_number] = "X"
-        return
-       }
-
-      }
-      this.board.board[this.board.board.length-1][col_number] = "X"
+      this.board.receive_piece(col_number);
     }
   }
+
+  // piece constructor
+
+    function Piece(red, black){
+      this.red = red;
+      this.black = black;
+    }
 
 
 
 
 
     board =  new Board();
-    board.create_board();
+    board.create_grid();
     new_game = new Game(board)
     console.log(board)
     new_game.drop_piece(1)
