@@ -13,8 +13,13 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   /*background-color: #FFF6B7;*/
-  font-family: 'SeasideResortNF';
+  font-family: 'Freckle Face', cursive;
 }
+
+.players {
+  
+}
+
 .cell {
   /*background-color: #2980b9;*/
   /*opacity: 0.10;*/

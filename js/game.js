@@ -106,9 +106,10 @@ H = 7
   // player constructor
     //prototypes
 
-    function Player(name, color) {
+    function Player(name, color, imgUrl) {
       this.name = name;
       this.color = color;
+      this.image = imgUrl;
     }
 
 

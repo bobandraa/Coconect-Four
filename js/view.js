@@ -9,8 +9,8 @@ View.prototype = {
     $('#players').text(player.name + "'s Turn!")
   },
 
-  setCellColor: function(row, col, color) {
-    $('#'+col+' .cell:nth-child('+(row)+')').css('background-color', color)
+  setCellColor: function(row, col, imageUrl) {
+    $('#'+col+' .cell:nth-child('+(row)+')').css('background-image', 'url("' + imageUrl + '")')
   },
 
   getColumns: function() {
