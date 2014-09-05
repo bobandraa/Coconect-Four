@@ -1,0 +1,48 @@
+#entire_board {
+  background-color: #FFE737;
+  height: 100%;
+  width: 40%;
+  margin: 8% auto;
+  border-radius: 2%;
+  margin-bottom: 0.5%;
+}
+
+body {
+  background-color: #FFF6B7;
+  font-family: 'SeasideResortNF';
+}
+.cell {
+  background-color: #2980b9;
+  border: 1px dotted #2980b9;
+  border-radius: 50%;
+  height:80px;
+  width: 80px;
+  margin-top: 6%
+}
+
+.column {
+  display: inline-block;
+  height: 100%;
+  width: 13%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+#column_wrapper {
+  text-align: center;
+  margin-left: 1.5%;
+}
+
+#current_player {
+  height: 10%;
+  position: inline-block;
+}
+
+footer {
+  margin-left: 30%;
+  font-size: 250%;
+  text-align: center;
+  margin-top: -2%;
+  margin-right: 2%;
+  width: 40%;
+}
