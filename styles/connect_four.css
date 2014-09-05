@@ -6,6 +6,7 @@
   margin: 8% auto;
   /*border-radius: 2%;*/
   margin-bottom: 0.5%;
+  margin-top: -.5em;
 }
 
 body {
@@ -15,10 +16,21 @@ body {
   /*background-color: #FFF6B7;*/
   font-family: 'Freckle Face', cursive;
 }
-
-.players {
-  
+#playerheader {
+  text-align: center;
 }
+
+#players {
+  display: inline;
+  font-size: 3em;
+  text-align: center;
+  color: black;
+}
+
+#bluebar {
+  background-color: blue;
+}
+
 
 .cell {
   /*background-color: #2980b9;*/
