@@ -11,6 +11,9 @@ View.prototype = {
 
   setCellColor: function(row, col, imageUrl) {
     $('#'+col+' .cell:nth-child('+(row)+')').css('background-image', 'url("' + imageUrl + '")')
+    $('#'+col+' .cell:nth-child('+(row)+')').css({"position": "relative", "top": "-600px"}).animate({top: "0px"}, "slow")
+    // debugger
+    $('#'+col+' .cell:nth-child('+(row)+')').effect( "bounce", {times:2});
   },
 
   getColumns: function() {

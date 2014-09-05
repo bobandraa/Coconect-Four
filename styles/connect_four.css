@@ -4,17 +4,17 @@
   height: 100%;
   width: 50%;
   margin: 8% auto;
-  /*border-radius: 2%;*/
+  border-radius: 2%;
   margin-bottom: 0.5%;
   margin-top: -.5em;
+  background-repeat: no-repeat;
 }
 
 body {
   background-image: url("../images/coconect.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  /*background-color: #FFF6B7;*/
-  font-family: 'Freckle Face', cursive;
+  font-family: 'Freckle Face';
 }
 #playerheader {
   text-align: center;
@@ -33,8 +33,6 @@ body {
 
 
 .cell {
-  /*background-color: #2980b9;*/
-  /*opacity: 0.10;*/
   border-radius: 50%;
   height:80px;
   width: 80px;
