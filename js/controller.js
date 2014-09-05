@@ -19,19 +19,21 @@ function Controller(game, view) {
 }
 
 var columnClicked = function(ev) {
-  var column = ev.target.parentNode.id
+  var column = ev.currentTarget;
   var color = this.game.current_player.color
-  var row = this.game.drop_piece(column)
+  var row = this.game.drop_piece(column.id)
+
   // REMOVE EVENT LISTENER IF ROW == 0
   this.view.setCurrentPlayer(this.game.current_player);
-  this.view.setCellColor(row+1, column, color) // VIEW METHOOOOOOD
+  this.view.setCellColor(row+1, column.id, color) // VIEW METHOOOOOOD
 }
 
 Controller.prototype = {
-  bindListeners: function(){
-    var columns = this.view.getColumns()
-    for (i=0; i < columns.length; i++){
-      columns[i].addEventListener("click", columnClicked.bind(this))
+  bindListeners: function() {
+    var columns = this.view.getColumns();
+    console.log(columns);
+    for (i=0; i < columns.length; i++) {
+      columns[i].addEventListener("click", columnClicked.bind(this));
     }
   }
 }
