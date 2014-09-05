@@ -11,6 +11,9 @@ View.prototype = {
 
   setCellColor: function(row, col, imageUrl) {
     $('#'+col+' .cell:nth-child('+(row)+')').css('background-image', 'url("' + imageUrl + '")')
+    $('#'+col+' .cell:nth-child('+(row)+')').css({"position": "relative", "top": "-600px"}).animate({top: "0px"}, "slow")
+    // debugger
+    $('#'+col+' .cell:nth-child('+(row)+')').effect( "bounce", {times:2});
   },
 
   getColumns: function() {
@@ -23,9 +26,12 @@ View.prototype = {
     $('#players').text("Game Over!")
     $('#gameover').blink()
   },
+  dropCells: function() {
+    $(".cell").animate({top: "1000px"}, {duration: 1500, complete: this.resetCells});
+  },
   resetCells: function() {
-    $(".cell").css({"background-color" : "0", "background-image" : ""})
     $('#gameover').css("display", "none")
-    
+    $(".cell").css({"top": "0px", "background-color" : "0", "background-image" : ""})
+
   }
 }
