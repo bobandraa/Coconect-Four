@@ -1,9 +1,10 @@
 #entire_board {
-  background-color: #FFE737;
+  background-image: url("../images/CoconectFour.png");
+  /*background-color: #FFE737;*/
   height: 100%;
-  width: 40%;
+  width: 50%;
   margin: 8% auto;
-  border-radius: 2%;
+  /*border-radius: 2%;*/
   margin-bottom: 0.5%;
 }
 
@@ -15,7 +16,7 @@ body {
   font-family: 'SeasideResortNF';
 }
 .cell {
-  background-color: #2980b9;
+  /*background-color: #2980b9;*/
   /*opacity: 0.10;*/
   border-radius: 50%;
   height:80px;
