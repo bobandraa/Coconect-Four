@@ -11,31 +11,31 @@ H = 7
   }
 
   Board.prototype = {
-    create_grid :function(){
+    createGrid :function(){
       this.grid = []
       for(i=0;i<6;i++){
         this.grid.push(new Array(7))
       }
     },
-    get_cell : function(x, y) {
+    getCell : function(x, y) {
       return this.grid[x][y]
     },
-    set_cell : function(x, y, piece) {
+    setCell : function(x, y, piece) {
       this.grid[x][y] = piece
     },
-    receive_piece: function(col_number, piece) {
-      if(this.get_cell(0, col_number) != null) {
+    receivePiece: function(colNumber, piece) {
+      if(this.getCell(0, colNumber) != null) {
         return null;
       }
 
       for(r=0;r<6;r++){
-       if (this.get_cell(r, col_number) != null){
-        this.set_cell(r-1, col_number, piece)
+       if (this.getCell(r, colNumber) != null){
+        this.setCell(r-1, colNumber, piece)
         return (r - 1)
       }
 
     }
-    this.set_cell(this.grid.length-1, col_number, piece)
+    this.setCell(this.grid.length-1, colNumber, piece)
     return (this.grid.length-1)
   },
   isFull : function() {
@@ -115,22 +115,22 @@ H = 7
   // game constructor
     //prototypes
 
-    function Game(board, red_player, black_player){
-      this.current_player;
+    function Game(board, redPlayer, blackPlayer){
+      this.currentPlayer;
       this.board = board;
-      this.red_player = red_player;
-      this.black_player =  black_player;
+      this.redPlayer = redPlayer;
+      this.blackPlayer =  blackPlayer;
     }
 
     Game.prototype = {
-      drop_piece :function(col_number){
-        var row = this.board.receive_piece(col_number, this.current_player.color);
+      dropPiece :function(colNumber){
+        var row = this.board.receivePiece(colNumber, this.currentPlayer.color);
 
         if(row != null) {
-          if (this.current_player === this.red_player) {
-            this.current_player = this.black_player
+          if (this.currentPlayer === this.redPlayer) {
+            this.currentPlayer = this.blackPlayer
           } else {
-            this.current_player = this.red_player
+            this.currentPlayer = this.redPlayer
           }
 
           return row;
@@ -143,18 +143,18 @@ H = 7
         return this.board.checkForWin('black') || this.board.checkForWin('red')
       },
       getWinner : function() {
-        if(this.board.checkForWin(this.red_player.color)) {
-          return red_player;
+        if(this.board.checkForWin(this.redPlayer.color)) {
+          return this.redPlayer;
         }
-        else if(this.board.checkForWin(this.black_player.color)) {
-          return black_player;
+        else if(this.board.checkForWin(this.blackPlayer.color)) {
+          return this.blackPlayer;
         }
       },
-      start_game :function() {
+      startGame :function() {
         if (Math.random() > 0.5){
-          this.current_player = this.red_player
+          this.currentPlayer = this.redPlayer
         } else {
-          this.current_player = this.black_player
+          this.currentPlayer = this.blackPlayer
         }
       }
     }
@@ -174,61 +174,61 @@ H = 7
 
 
   // board =  new Board();
-  // board.create_grid();
+  // board.createGrid();
   // new_game = new Game(board, player1, player2)
-  // new_game.start_game();
+  // new_game.startGame();
   // console.log(board)
-  // new_game.drop_piece(0)
-  // new_game.drop_piece(0)
-  // new_game.drop_piece(0)
-  // new_game.drop_piece(0)
-  // new_game.drop_piece(0)
-  // new_game.drop_piece(0)
+  // new_game.dropPiece(0)
+  // new_game.dropPiece(0)
+  // new_game.dropPiece(0)
+  // new_game.dropPiece(0)
+  // new_game.dropPiece(0)
+  // new_game.dropPiece(0)
 
-  // new_game.drop_piece(1)
-  // new_game.drop_piece(1)
-  // new_game.drop_piece(1)
-  // new_game.drop_piece(1)
-  // new_game.drop_piece(1)
-  // new_game.drop_piece(1)
+  // new_game.dropPiece(1)
+  // new_game.dropPiece(1)
+  // new_game.dropPiece(1)
+  // new_game.dropPiece(1)
+  // new_game.dropPiece(1)
+  // new_game.dropPiece(1)
 
-  // new_game.drop_piece(2)
-  // new_game.drop_piece(2)
-  // new_game.drop_piece(2)
-  // new_game.drop_piece(2)
-  // new_game.drop_piece(2)
-  // new_game.drop_piece(2)
+  // new_game.dropPiece(2)
+  // new_game.dropPiece(2)
+  // new_game.dropPiece(2)
+  // new_game.dropPiece(2)
+  // new_game.dropPiece(2)
+  // new_game.dropPiece(2)
 
 
-  // new_game.drop_piece(3)
-  // new_game.drop_piece(3)
-  // new_game.drop_piece(3)
-  // new_game.drop_piece(3)
-  // new_game.drop_piece(3)
-  // new_game.drop_piece(3)
+  // new_game.dropPiece(3)
+  // new_game.dropPiece(3)
+  // new_game.dropPiece(3)
+  // new_game.dropPiece(3)
+  // new_game.dropPiece(3)
+  // new_game.dropPiece(3)
 
-  // new_game.drop_piece(4)
-  // new_game.drop_piece(4)
-  // new_game.drop_piece(4)
-  // new_game.drop_piece(4)
-  // new_game.drop_piece(4)
-  // new_game.drop_piece(4)
+  // new_game.dropPiece(4)
+  // new_game.dropPiece(4)
+  // new_game.dropPiece(4)
+  // new_game.dropPiece(4)
+  // new_game.dropPiece(4)
+  // new_game.dropPiece(4)
   // console.log(board.isFull());
 
-  // new_game.drop_piece(5)
-  // new_game.drop_piece(5)
-  // new_game.drop_piece(5)
-  // new_game.drop_piece(5)
-  // new_game.drop_piece(5)
-  // new_game.drop_piece(5)
+  // new_game.dropPiece(5)
+  // new_game.dropPiece(5)
+  // new_game.dropPiece(5)
+  // new_game.dropPiece(5)
+  // new_game.dropPiece(5)
+  // new_game.dropPiece(5)
 
 
-  // new_game.drop_piece(6)
-  // new_game.drop_piece(6)
-  // new_game.drop_piece(6)
-  // new_game.drop_piece(6)
-  // new_game.drop_piece(6)
-  // new_game.drop_piece(6)
+  // new_game.dropPiece(6)
+  // new_game.dropPiece(6)
+  // new_game.dropPiece(6)
+  // new_game.dropPiece(6)
+  // new_game.dropPiece(6)
+  // new_game.dropPiece(6)
   // console.log(new_game.isGameOver())
   // console.log(new_game.isGameOver())
   // console.log(board.isFull());

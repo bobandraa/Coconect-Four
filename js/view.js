@@ -15,14 +15,9 @@ View.prototype = {
 
   getColumns: function() {
     return $('.column');
+  },
+
+  setWinner: function(player) {
+    // SHOW THE WINNER
   }
 }
-
-// $( ".column .cell" ).on("click", function() {
-//   $( this ).className( "red_cell" );
-// });
-// $("#1 .cell:first").on("click", console.log("omg"))
-
-//   function set_color(){
-//   $( ".last" ).css("background-color", "red")
-// });
