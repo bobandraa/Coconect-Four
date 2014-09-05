@@ -17,6 +17,9 @@ H = 7
         this.grid.push(new Array(7))
       }
     },
+    reset: function() {
+      this.createGrid();
+    },
     getCell : function(x, y) {
       return this.grid[x][y]
     },
@@ -103,135 +106,62 @@ H = 7
   }
 }
 
-  // player constructor
-    //prototypes
+// player constructor
+//prototypes
 
-    function Player(name, color, imgUrl) {
-      this.name = name;
-      this.color = color;
-      this.image = imgUrl;
-    }
+function Player(name, color, imgUrl) {
+  this.name = name;
+  this.color = color;
+  this.image = imgUrl;
+}
 
 
-  // game constructor
-    //prototypes
+// game constructor
+//prototypes
 
-    function Game(board, redPlayer, blackPlayer){
-      this.currentPlayer;
-      this.board = board;
-      this.redPlayer = redPlayer;
-      this.blackPlayer =  blackPlayer;
-    }
+function Game(board, redPlayer, blackPlayer){
+  this.currentPlayer;
+  this.board = board;
+  this.redPlayer = redPlayer;
+  this.blackPlayer =  blackPlayer;
+}
 
-    Game.prototype = {
-      dropPiece :function(colNumber){
-        var row = this.board.receivePiece(colNumber, this.currentPlayer.color);
+Game.prototype = {
+  dropPiece :function(colNumber){
+    var row = this.board.receivePiece(colNumber, this.currentPlayer.color);
 
-        if(row != null) {
-          if (this.currentPlayer === this.redPlayer) {
-            this.currentPlayer = this.blackPlayer
-          } else {
-            this.currentPlayer = this.redPlayer
-          }
-
-          return row;
-        }
-        else {
-          return null;
-        }
-      },
-      isGameOver :function() {
-        return this.board.checkForWin('black') || this.board.checkForWin('red')
-      },
-      getWinner : function() {
-        if(this.board.checkForWin(this.redPlayer.color)) {
-          return this.redPlayer;
-        }
-        else if(this.board.checkForWin(this.blackPlayer.color)) {
-          return this.blackPlayer;
-        }
-      },
-      startGame :function() {
-        if (Math.random() > 0.5){
-          this.currentPlayer = this.redPlayer
-        } else {
-          this.currentPlayer = this.blackPlayer
-        }
+    if(row != null) {
+      if (this.currentPlayer === this.redPlayer) {
+        this.currentPlayer = this.blackPlayer
+      } else {
+        this.currentPlayer = this.redPlayer
       }
+
+      return row;
     }
-
-  // piece constructor
-
-  function Piece(red, black){
-    this.red = red;
-    this.black = black;
+    else {
+      return null;
+    }
+  },
+  isGameOver :function() {
+    return this.board.checkForWin(this.redPlayer.color) || this.board.checkForWin(this.blackPlayer.color)
+  },
+  getWinner : function() {
+    if(this.board.checkForWin(this.redPlayer.color)) {
+      return this.redPlayer;
+    }
+    else if(this.board.checkForWin(this.blackPlayer.color)) {
+      return this.blackPlayer;
+    }
+  },
+  startGame :function() {
+    if (Math.random() > 0.5){
+      this.currentPlayer = this.redPlayer
+    } else {
+      this.currentPlayer = this.blackPlayer
+    }
+  },
+  resetGame: function() {
+    this.board.reset();
   }
-
-
-
-
-  // var player1 = new Player("Player 1", "red");
-  // var player2 = new Player("Player 2", "black");
-
-
-  // board =  new Board();
-  // board.createGrid();
-  // new_game = new Game(board, player1, player2)
-  // new_game.startGame();
-  // console.log(board)
-  // new_game.dropPiece(0)
-  // new_game.dropPiece(0)
-  // new_game.dropPiece(0)
-  // new_game.dropPiece(0)
-  // new_game.dropPiece(0)
-  // new_game.dropPiece(0)
-
-  // new_game.dropPiece(1)
-  // new_game.dropPiece(1)
-  // new_game.dropPiece(1)
-  // new_game.dropPiece(1)
-  // new_game.dropPiece(1)
-  // new_game.dropPiece(1)
-
-  // new_game.dropPiece(2)
-  // new_game.dropPiece(2)
-  // new_game.dropPiece(2)
-  // new_game.dropPiece(2)
-  // new_game.dropPiece(2)
-  // new_game.dropPiece(2)
-
-
-  // new_game.dropPiece(3)
-  // new_game.dropPiece(3)
-  // new_game.dropPiece(3)
-  // new_game.dropPiece(3)
-  // new_game.dropPiece(3)
-  // new_game.dropPiece(3)
-
-  // new_game.dropPiece(4)
-  // new_game.dropPiece(4)
-  // new_game.dropPiece(4)
-  // new_game.dropPiece(4)
-  // new_game.dropPiece(4)
-  // new_game.dropPiece(4)
-  // console.log(board.isFull());
-
-  // new_game.dropPiece(5)
-  // new_game.dropPiece(5)
-  // new_game.dropPiece(5)
-  // new_game.dropPiece(5)
-  // new_game.dropPiece(5)
-  // new_game.dropPiece(5)
-
-
-  // new_game.dropPiece(6)
-  // new_game.dropPiece(6)
-  // new_game.dropPiece(6)
-  // new_game.dropPiece(6)
-  // new_game.dropPiece(6)
-  // new_game.dropPiece(6)
-  // console.log(new_game.isGameOver())
-  // console.log(new_game.isGameOver())
-  // console.log(board.isFull());
-  // console.log(board)
-  // console.log(board.board)
+}
