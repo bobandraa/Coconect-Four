@@ -49,6 +49,6 @@ Controller.prototype = {
   },
   resetGame: function() {
     this.game.resetGame();
-    this.view.resetCells();
+    this.view.dropCells();
   }
 }

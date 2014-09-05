@@ -23,7 +23,10 @@ View.prototype = {
   setWinner: function(player) {
     // SHOW THE WINNER
   },
+  dropCells: function() {
+    $(".cell").animate({top: "1000px"}, {duration: 1500, complete: this.resetCells});
+  },
   resetCells: function() {
-    $(".cell").css({"background-color" : "0", "background-image" : ""})
+    $(".cell").css({"top": "0px", "background-color" : "0", "background-image" : ""})
   }
 }
