@@ -1,3 +1,7 @@
+html {
+  overflow-y: hidden;
+}
+
 #entire_board {
   background-image: url("../images/CoconectFour.png");
   /*background-color: #FFE737;*/
@@ -6,6 +10,7 @@
   margin: 8% auto;
   border-radius: 2%;
   margin-bottom: 0.5%;
+  margin-top: -.5em;
 }
 
 body {
@@ -14,6 +19,21 @@ body {
   background-repeat: no-repeat;
   font-family: 'Freckle Face';
 }
+#playerheader {
+  text-align: center;
+}
+
+#players {
+  display: inline;
+  font-size: 3em;
+  text-align: center;
+  color: black;
+}
+
+#bluebar {
+  background-color: blue;
+}
+
 .cell {
   border-radius: 50%;
   height:80px;
