@@ -20,9 +20,10 @@ function Controller(game, view) {
 var columnClicked = function(ev) {
   var column = ev.target.id
   var color = this.game.current_player.color
-  this.game.drop_piece(column)
+  var row = this.game.drop_piece(column)
+  // REMOVE EVENT LISTENER IF ROW == 0
 
-  this.view.set_cell(column, ????, color) // VIEW METHOOOOOD NEED ROW
+  this.view.set_cell(column, row, color) // VIEW METHOOOOOOD
 }
 
 Controller.prototype = {
