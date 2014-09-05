@@ -1,16 +1,14 @@
 $('document').ready(function(){
   var board = new Board();
   var view = new View();
-  board.create_grid();
+  board.createGrid();
   var player1 = new Player("Player 1", "red");
   var player2 = new Player("Player 2", "black");
   var game = new Game(board, player1, player2);
   var controller = new Controller(game, view);
   controller.bindListeners();
-  game.start_game();
-  view.setCurrentPlayer(game.current_player); // VIEW METHOOOOOD
-
-
+  game.startGame();
+  view.setCurrentPlayer(game.currentPlayer); // VIEW METHOOOOOD
 });
 
 function Controller(game, view) {
@@ -19,19 +17,30 @@ function Controller(game, view) {
 }
 
 var columnClicked = function(ev) {
-  var column = ev.target.parentNode.id
-  var color = this.game.current_player.color
-  var row = this.game.drop_piece(column)
-  // REMOVE EVENT LISTENER IF ROW == 0
-  this.view.setCurrentPlayer(this.game.current_player);
-  this.view.setCellColor(row+1, column, color) // VIEW METHOOOOOOD
+  if(!this.game.isGameOver()) {
+    var column = ev.currentTarget;
+    var color = this.game.currentPlayer.color
+    var row = this.game.dropPiece(column.id)
+
+    if(row != null) {
+      this.view.setCurrentPlayer(this.game.currentPlayer);
+      this.view.setCellColor(row+1, column.id, color) // VIEW METHOOOOOOD
+    }
+
+    this.checkGameOver();
+  }
 }
 
 Controller.prototype = {
-  bindListeners: function(){
-    var columns = this.view.getColumns()
-    for (i=0; i < columns.length; i++){
-      columns[i].addEventListener("click", columnClicked.bind(this))
+  bindListeners: function() {
+    var columns = this.view.getColumns();
+    for (i=0; i < columns.length; i++) {
+      columns[i].addEventListener("click", columnClicked.bind(this));
+    }
+  },
+  checkGameOver: function() {
+    if(this.game.isGameOver()) {
+      this.view.setWinner(this.game.getWinner());
     }
   }
 }
