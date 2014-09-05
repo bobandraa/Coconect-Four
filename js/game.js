@@ -1,4 +1,6 @@
 // models
+R = 6
+H = 7
 
   // board constructor
   //prototypes
@@ -22,15 +24,68 @@
       this.grid[x][y] = piece
     },
     receive_piece: function(col_number, piece) {
-      for(k=0;k<6;k++){
-       if (this.get_cell(k, col_number) != null){
-        this.set_cell(k-1, col_number, "x")
-        return
+      for(r=0;r<6;r++){
+       if (this.get_cell(r, col_number) != null){
+        this.set_cell(r-1, col_number, piece)
+        return (r - 1)
        }
 
       }
-      this.set_cell(this.grid.length-1, col_number, "x")
-    }
+      this.set_cell(this.grid.length-1, col_number, piece)
+      return (this.grid.length-1)
+    },
+/////////////////////////////////////////////////////
+  checkForWin : function(piece) {
+  return (this.checkHorizontal(piece) || this.checkVertical(piece) || this.checkDiagonal(piece))
+},
+
+  checkHorizontal : function(piece) {
+          for (r=0; r <= R - 1; r++) {
+            for (c=0; c <= H-4; c++) {
+              if ((this.grid[r][c] == piece) && (this.grid[r][c+1] == piece) && (this.grid[r][c+2] == piece) && (this.grid[r][c+3] == piece)) {
+                return true;
+                }
+              }
+            }
+            return false;
+          },
+
+  checkVertical : function(piece) {
+          for (r = 0; r <= R - 4; r++){
+            for (c = 0; c <= H - 1; c++){
+              if ((this.grid[r][c] == piece) && (this.grid[r+1][c] == piece) && (this.grid[r+2][c] == piece) && (this.grid[r+3][c] == piece)) {
+                return true;
+              }
+            }
+          }
+          return false;
+        },
+
+  checkDiagonal : function(piece) {
+    return (this.checkSouthEast(piece) || this.checkSouthWest(piece))
+      },
+
+  checkSouthEast : function(piece) {
+              for (r=0; r<= R-4; r++) {
+                for (c=0; c<= H-4; c++) {
+                  if ((this.grid[r][c] == piece) && (this.grid[r+1][c+1] == piece) && (this.grid[r+2][c+2] == piece) && (this.grid[r+3][c+3] == piece)) {
+                    return true;
+                }
+              }
+            }
+            return false;
+          },
+
+    checkSouthWest : function(piece) {
+              for (r=0; r<= R-4; r++) {
+                for (c=H-1; c>= H-4; c--) {
+                  if ((this.grid[r][c] == piece) && (this.grid[r+1][c-1] == piece) && (this.grid[r+2][c-2] == piece) && (this.grid[r+3][c-3] == piece)) {
+                    return true;
+                }
+              }
+            }
+            return false;
+          }
   }
 
   // player constructor
@@ -46,6 +101,7 @@
     //prototypes
 
     function Game(board, red_player, black_player){
+      this.current_player;
       this.board = board;
       this.red_player = red_player;
       this.black_player =  black_player;
@@ -53,7 +109,24 @@
 
   Game.prototype = {
     drop_piece :function(col_number){
-      this.board.receive_piece(col_number);
+      var row = this.board.receive_piece(col_number, this.current_player.color);
+      if (this.current_player === this.red_player) {
+        this.current_player = this.black_player
+      } else {
+        this.current_player = this.red_player
+      }
+
+      return row
+    },
+    isGameOver :function() {
+      return this.board.checkForWin('black')
+    },
+    start_game :function() {
+      if (Math.random() > 0.5){
+        this.current_player = this.red_player
+      } else {
+        this.current_player = this.black_player
+      }
     }
   }
 
@@ -67,12 +140,24 @@
 
 
 
+  var player1 = new Player("Player 1", "red");
+  var player2 = new Player("Player 2", "black");
+
 
     board =  new Board();
     board.create_grid();
-    new_game = new Game(board)
+    new_game = new Game(board, player1, player2)
+    new_game.start_game();
     console.log(board)
     new_game.drop_piece(1)
     new_game.drop_piece(1)
+    new_game.drop_piece(2)
+    new_game.drop_piece(1)
+    new_game.drop_piece(3)
+    new_game.drop_piece(2)
+    console.log(new_game.isGameOver())
+    new_game.drop_piece(4)
+    console.log(new_game.isGameOver())
     console.log(board)
     console.log(board.board)
+
