@@ -3,27 +3,29 @@ html {
 }
 
 #entire_board {
-  background-image: url("../images/CoconectFour.png");
-  /*background-color: #FFE737;*/
-  height: 100%;
-  width: 50%;
-  margin: 8% auto;
-  border-radius: 2%;
-  margin-bottom: 0.5%;
-  margin-top: -.5em;
-  background-repeat: no-repeat;
+background-image: url("../images/CoconectFour.png");
+/*background-color: #FFE737;*/
+height: 100%;
+width: 50%;
+margin: 8% auto;
+border-radius: 2%;
+margin-bottom: 0.5%;
+margin-top: -.5em;
+background-repeat: no-repeat;*/
 
 }
 
 /*#entire_board:after {
-
+  pointer-events: none;
   content: '';
   background-image: url("../images/CoconectFour.png");
-  height: 600px;
-  width: 600px;
-position: relative;
-top: -500px;
-display: inline-block;
+  background-repeat: no-repeat;
+  height: 715px;
+  width: 831px;
+  position: relative;
+  top: -530px;
+  display: inline-block;
+  border-radius: 2%;
 }*/
 
 body {
