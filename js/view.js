@@ -18,12 +18,14 @@ View.prototype = {
   },
 
   setWinner: function(player) {
-    $('#gameover').append("<h1>" + player.name + " wins!!!</h1>")
+    $('#gameover').text(player.name + " wins!!!")
     $('#gameover').css("display", "inline")
     $('#players').text("Game Over!")
     $('#gameover').blink()
   },
   resetCells: function() {
     $(".cell").css({"background-color" : "0", "background-image" : ""})
+    $('#gameover').css("display", "none")
+    
   }
 }

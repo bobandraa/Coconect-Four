@@ -50,5 +50,6 @@ Controller.prototype = {
   resetGame: function() {
     this.game.resetGame();
     this.view.resetCells();
+    this.view.setCurrentPlayer(this.game.currentPlayer);
   }
 }
