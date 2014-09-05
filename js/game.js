@@ -74,5 +74,6 @@
     console.log(board)
     new_game.drop_piece(1)
     new_game.drop_piece(1)
+    new_game.drop_piece(1)
     console.log(board)
     console.log(board.board)

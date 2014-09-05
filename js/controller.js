@@ -6,9 +6,9 @@ $('document').ready(function(){
   var game = new Game(board, player1, player2);
 
 
-})
+});
 
 function Controller(game) {
   this.game = game;
-  // body...
+  View.setColor(row, col, 'red')
 }

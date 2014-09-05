@@ -46,3 +46,7 @@ footer {
   margin-right: 2%;
   width: 40%;
 }
+
+.red_cell {
+  background-color: red;
+}
