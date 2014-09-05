@@ -12,7 +12,19 @@ html {
   margin-bottom: 0.5%;
   margin-top: -.5em;
   background-repeat: no-repeat;
+
 }
+
+/*#entire_board:after {
+
+  content: '';
+  background-image: url("../images/CoconectFour.png");
+  height: 600px;
+  width: 600px;
+position: relative;
+top: -500px;
+display: inline-block;
+}*/
 
 body {
   background-image: url("../images/coconect.jpg");
